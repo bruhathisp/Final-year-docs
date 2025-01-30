@@ -21,18 +21,6 @@ The **absolute sum** is a way of measuring the total magnitude of numbers, **ign
 
 ---
 
-### **3. Definition of Absolute Sum**
-If we have a list of numbers:
-
-\[
-x_1, x_2, x_3, ..., x_n
-\]
-
-The **absolute sum** is:
-
-\[
-\sum_{i=1}^{n} |x_i|
-\]
 
 This means:
 1. Take the absolute value of each number.
@@ -106,7 +94,7 @@ double STA = sum / STA_Window_Size;
 ✅ **Prevents negative values from canceling out positive values**.  
 ✅ **Used in STA/LTA to measure signal strength in seismic detection**.  
 
-Would you like more **examples** or **real-world applications**? 🚀
+
 
 
 
@@ -120,9 +108,8 @@ The **STA/LTA (Short-Term Average to Long-Term Average) algorithm** is a method 
 
 ### **1.1 Short-Term Average (STA)**
 - **Formula**:  
-  \[
-  STA(t) = \frac{1}{N_s} \sum_{i=t-N_s+1}^{t} |x(i)|
-  \]
+ ![image](https://github.com/user-attachments/assets/c21ed1b2-dc93-4c6c-a3b6-b4e0b65c3176)
+
 - **Meaning**:  
   - Computes the **average absolute amplitude** of the signal **over a short time window** (\( N_s \)).
   - Represents the **current seismic activity**.
@@ -137,9 +124,8 @@ The **STA/LTA (Short-Term Average to Long-Term Average) algorithm** is a method 
 
 ### **1.2 Long-Term Average (LTA)**
 - **Formula**:  
-  \[
-  LTA(t) = \frac{1}{N_l} \sum_{i=t-N_l+1}^{t} |x(i)|
-  \]
+ ![image](https://github.com/user-attachments/assets/eb809413-b085-43b7-b400-ed2c87eff14f)
+
 - **Meaning**:  
   - Computes the **average absolute amplitude** over a **longer window** (\( N_l \)), usually **10× longer than STA**.
   - Represents the **background noise level**.
@@ -154,13 +140,8 @@ The **STA/LTA (Short-Term Average to Long-Term Average) algorithm** is a method 
 
 ### **1.3 STA/LTA Ratio for Event Detection**
 - **Formula**:  
-  \[
-  R(t) = \frac{STA(t)}{LTA(t)}
-  \]
-- **Event Detection Condition**:
-  \[
-  R(t) > T
-  \]
+ ![image](https://github.com/user-attachments/assets/f254d192-41e8-475f-923f-59ae0c992cda)
+
   - If \( R(t) \) exceeds **threshold \( T \)** (e.g., **3 to 5**), a **seismic event is detected**.
 
 - **Why is this useful?**
@@ -174,9 +155,8 @@ To **dynamically adjust the threshold**, we use a **noise baseline**. This helps
 
 ### **2.1 How is Noise Baseline Calculated?**
 - The **noise baseline** is computed as the **average absolute value of past signal samples**:
-  \[
-  \text{NoiseBaseline}(t) = \frac{1}{M} \sum_{i=t-M+1}^{t} |x(i)|
-  \]
+  ![image](https://github.com/user-attachments/assets/e969d530-82e7-4314-8006-1b309378d572)
+
   - \( M \) = Total number of samples used to calculate baseline.
   - This smooths out **random fluctuations**.
 
